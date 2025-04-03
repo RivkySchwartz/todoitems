@@ -1,0 +1,14 @@
+﻿@model EditViewModel
+
+<div style="height: 70vh;" class="row justify-content-center align-items-center">
+    <div class="col-md-8">
+        <form method="post" action="/home/updatecategory">
+            <input type="text" value="@Model.Category.CategoryName" class="form-control-lg form-control" placeholder="Category Name" name="categoryName" />
+            <input type="hidden" name="id" value="@Model.Category.Id" />
+            <br />
+            <div class="d-grid gap-2">
+                <button class="btn btn-danger btn-block">Update</button>
+            </div>
+        </form>
+    </div>
+</div>

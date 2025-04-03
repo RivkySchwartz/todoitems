@@ -1,0 +1,50 @@
+﻿@model ItemViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <a href="/home/newitem" class="btn btn-success">New Item</a>
+        <br />
+        <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Due Date</th>
+                <th>Mark as Completed</th>
+            </tr>
+            @foreach (ToDoItem i in Model.Items)
+            {
+                if (i.DueDate < DateTime.Now)
+                {
+                    <tr class="table-danger">
+                        <td>@i.Title</td>
+                        <td>@i.CategoryName</td>
+                        <td>@i.DueDate.ToShortDateString()</td>
+                        <td>
+                            <form method="post" action="/home/markascompleted">
+                                <input name="id" value="@i.CategoryId" type="hidden" />
+                                <button class="btn btn-primary">Mark as Completed</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@i.Title</td>
+                        <td>@i.CategoryName</td>
+                        <td>@i.DueDate.ToShortDateString()</td>
+                        <td>
+                            <form method="post" action="/home/markascompleted">
+                                <input name="id" value="@i.CategoryId" type="hidden" />
+                                <button class="btn btn-primary">Mark as Completed</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+</div>

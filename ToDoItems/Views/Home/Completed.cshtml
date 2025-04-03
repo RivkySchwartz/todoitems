@@ -1,0 +1,25 @@
+﻿@model ItemViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <table class="table table-hover table-striped table-bordered">
+            <tr>
+                <th>Title</th>
+                <th>Category Name</th>
+                <th>Date Completed</th>
+            </tr>
+            @foreach (ToDoItem i in Model.Items)
+            {
+                <tr>
+                    <td>@i.Title</td>
+                    <td>@i.CategoryName</td>
+                    <td>@i.CompletedDate.Value.ToShortDateString()</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

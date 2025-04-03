@@ -1,0 +1,26 @@
+﻿@model CategoryViewModel
+@{
+
+}
+<div class="col-md-8 offset-md-2">
+    <a href="/home/newcategory" class="btn btn-success">New Category</a>
+    <br />
+    <table class="table table-hover table-striped table-bordered">
+        <tr>
+            <th>Category Name</th>
+            <th>Edit</th>
+        </tr>
+
+        @foreach (Category c in Model.Categories)
+        {
+            <tr>
+                <td>
+                    <a href="/home/itemsforcategory?id=@c.Id">@c.CategoryName</a>
+                </td>
+                <td>
+                    <a href="/home/editcategory?id=@c.Id" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
